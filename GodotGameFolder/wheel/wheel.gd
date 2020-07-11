@@ -7,7 +7,7 @@ func _ready():
 
 func _process(delta):
 	$rotator.rotation_degrees = rot * 360 / 16
-	signal_emitter.emit_signal("add_to_plane_rotation", $rotator.rotation, delta)
+	signal_emitter.emit_signal("add_to_plane_rotation", -$rotator.rotation, delta)
 	if sign(rot) == -1:
 		frame = 16 - (int(rot / -1) % 16)
 	else:

@@ -4,6 +4,7 @@ var pos = 3
 
 func _process(delta):
 	frame = pos
+	signal_emitter.emit_signal("add_to_plane_tilt", pos - 3, delta)
 
 
 

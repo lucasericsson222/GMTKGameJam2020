@@ -20,7 +20,7 @@ func _on_set_plane_rotation(rot):
 	signal_emitter.emit_signal("rotation_changed", plane_rotation)
 
 func _on_add_to_plane_tilt(tilt, delta):
-	plane_tilt += tilt
+	plane_tilt += tilt * delta
 	signal_emitter.emit_signal("tilt_changed", plane_tilt)
 
 func _on_set_plane_tilt(tilt):
