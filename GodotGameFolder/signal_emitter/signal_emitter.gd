@@ -1,16 +1,8 @@
 extends Node
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+signal set_plane_rotation(rot)
+signal set_plane_tilt(tilt)
+signal add_to_plane_rotation(rot)
+signal add_to_plane_tilt(tilt)
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

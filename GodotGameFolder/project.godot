@@ -19,6 +19,10 @@ config/name="Godot Game Folder"
 run/main_scene="res://main_game.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+signal_emitter="*res://signal_emitter/signal_emitter.gd"
+
 [display]
 
 window/size/width=320
