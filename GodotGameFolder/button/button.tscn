@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://button/sprites/button_pressed.png" type="Texture" id=1]
+[ext_resource path="res://button/sprites/button_not_pressed.png" type="Texture" id=2]
+[ext_resource path="res://button/sprites/warning_sheet.png" type="Texture" id=3]
+[ext_resource path="res://button/button.gd" type="Script" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": true,
+"name": "warning",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "pressed",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "not_pressed",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 7.99817
+
+[node name="button_animated_sprite" type="AnimatedSprite"]
+frames = SubResource( 3 )
+animation = "not_pressed"
+script = ExtResource( 4 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 4 )
+
+[node name="UnClickTimer" type="Timer" parent="."]
+wait_time = 0.5
+[connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://tilt_lift/tilt_lift.png" type="Texture" id=1]
+
+[node name="tilt_lift" type="Sprite"]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="left_corner" type="Position2D" parent="."]
+position = Vector2( 0, 50 )
+
+[node name="right_corner" type="Position2D" parent="."]
+position = Vector2( 75, 50 )
+
+[node name="left_middle" type="Position2D" parent="."]
+position = Vector2( 0, 25 )
+
+[node name="right_middle" type="Position2D" parent="."]
+position = Vector2( 75, 25 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
