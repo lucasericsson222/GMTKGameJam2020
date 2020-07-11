@@ -59,5 +59,9 @@ position = Vector2( 0, 30 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDown"]
 position = Vector2( 0, -15 )
 shape = SubResource( 9 )
+
+[node name="AddWind" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
 [connection signal="input_event" from="AreaUp" to="." method="_on_AreaUp_input_event"]
 [connection signal="input_event" from="AreaDown" to="." method="_on_AreaDown_input_event"]

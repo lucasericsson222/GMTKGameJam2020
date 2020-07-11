@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://airplane/sprites/airplane.png" type="Texture" id=1]
+[ext_resource path="res://airplane/airplane.gd" type="Script" id=2]
+
+[node name="Sprite" type="Sprite"]
+z_index = -100
+texture = ExtResource( 1 )
+script = ExtResource( 2 )

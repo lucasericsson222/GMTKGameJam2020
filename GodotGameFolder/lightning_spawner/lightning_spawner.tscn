@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://lightning_spawner/sprites/lightning1.png" type="Texture" id=1]
+[ext_resource path="res://lightning_spawner/lightning_spawner.gd" type="Script" id=2]
+
+[node name="lightning_spawner" type="Sprite"]
+texture = ExtResource( 1 )
+centered = false
+script = ExtResource( 2 )
+
+[node name="lightning_timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true

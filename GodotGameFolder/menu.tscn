@@ -1,0 +1,118 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Pixeboy-z8XGD.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://menu.gd" type="Script" id=2]
+[ext_resource path="res://cloud/cloud.tscn" type="PackedScene" id=3]
+[ext_resource path="res://airplane/airplane.tscn" type="PackedScene" id=4]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 49
+font_data = ExtResource( 1 )
+
+[node name="menu" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 328.0
+margin_bottom = 245.0
+color = Color( 0.196078, 0.619608, 0.870588, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 321.0
+margin_bottom = 241.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="CenterContainer"]
+margin_left = 114.0
+margin_top = 106.0
+margin_right = 206.0
+margin_bottom = 135.0
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+text = "PLAY"
+
+[node name="Sprite" parent="." instance=ExtResource( 3 )]
+position = Vector2( 51.7525, 56.9474 )
+
+[node name="Sprite2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 153.951, 187.96 )
+
+[node name="Sprite3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 246.245, 73.6053 )
+
+[node name="Sprite4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 58.0555, 147.44 )
+
+[node name="Sprite5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 266.054, 139.336 )
+
+[node name="Cloud" parent="." instance=ExtResource( 3 )]
+position = Vector2( 25.594, 248.446 )
+
+[node name="Cloud2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 69.4531, 249.289 )
+
+[node name="Cloud3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 116.686, 248.867 )
+
+[node name="Cloud4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 163.076, 249.289 )
+
+[node name="Cloud5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 204.826, 250.554 )
+
+[node name="Cloud6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 249.95, 250.976 )
+
+[node name="Cloud7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 293.81, 248.024 )
+
+[node name="Cloud8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 331.765, 250.554 )
+
+[node name="Cloud9" parent="." instance=ExtResource( 3 )]
+position = Vector2( -4.77005, 246.759 )
+
+[node name="Cloud10" parent="." instance=ExtResource( 3 )]
+position = Vector2( 367.611, 248.867 )
+
+[node name="Cloud11" parent="." instance=ExtResource( 3 )]
+position = Vector2( 14.6292, 199.947 )
+
+[node name="Cloud12" parent="." instance=ExtResource( 3 )]
+position = Vector2( 96.0217, 95.3602 )
+
+[node name="Cloud13" parent="." instance=ExtResource( 3 )]
+position = Vector2( 302.244, 18.6067 )
+
+[node name="Cloud14" parent="." instance=ExtResource( 3 )]
+position = Vector2( 147.472, 15.2329 )
+
+[node name="Sprite6" parent="." instance=ExtResource( 4 )]
+position = Vector2( 165.454, 57.484 )
+z_index = 100
+[connection signal="pressed" from="CenterContainer/Button" to="." method="_on_Button_pressed"]

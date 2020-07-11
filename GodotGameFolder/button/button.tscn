@@ -15,14 +15,14 @@ region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ) ],
-"loop": true,
-"name": "warning",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "pressed",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": true,
+"name": "warning",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ) ],
@@ -46,4 +46,9 @@ shape = SubResource( 4 )
 
 [node name="UnClickTimer" type="Timer" parent="."]
 wait_time = 0.5
+one_shot = true
+
+[node name="WarningTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
