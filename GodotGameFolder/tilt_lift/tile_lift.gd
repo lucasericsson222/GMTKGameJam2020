@@ -8,7 +8,7 @@ extends Sprite
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$CanvasLayer/Node2D.position = position
+	$CanvasLayer/ViewportContainer.rect_position = position
 
 
 	

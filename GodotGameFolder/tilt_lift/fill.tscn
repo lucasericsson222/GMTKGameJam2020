@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://tilt_lift/fill.gd" type="Script" id=1]
+[ext_resource path="res://tilt_lift/fill.png" type="Texture" id=2]
+
+[node name="Sprite" type="Sprite"]
+modulate = Color( 0.0941176, 0.552941, 0.0431373, 1 )
+position = Vector2( 37, 50 )
+scale = Vector2( 300, 100 )
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -0.5, -1 )
+script = ExtResource( 1 )

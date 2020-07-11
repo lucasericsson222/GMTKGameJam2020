@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fill.png-65d5f3f85f53dd61ced2a985e01eef56.stex"
+path="res://.import/switch.png-b129b8bfa86adf30a6b6f9b2d2db9a8e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilt_lift/fill.png"
-dest_files=[ "res://.import/fill.png-65d5f3f85f53dd61ced2a985e01eef56.stex" ]
+source_file="res://switch/sprites/switch.png"
+dest_files=[ "res://.import/switch.png-b129b8bfa86adf30a6b6f9b2d2db9a8e.stex" ]
 
 [params]
 

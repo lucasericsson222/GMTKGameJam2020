@@ -1,6 +1,16 @@
-tool
 extends Sprite
 
 func _ready():
-	scale = Vector2(get_viewport_rect().size.x, get_viewport_rect().size.y/2)
+	signal_emitter.connect("rotation_changed", self, "_on_rotation_changed")
+	signal_emitter.connect("tilt_changed", self, "_on_tilt_changed")
+var rot = PI
+var tilt = 0
+func _process(delta):
+	rotation = rot
 
+
+func _on_rotation_changed(new_rot):
+	rot = new_rot + PI
+
+func _on_tilt_changed(new_tilt):
+	tilt = new_tilt
