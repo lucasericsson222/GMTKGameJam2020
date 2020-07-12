@@ -15,13 +15,14 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Godot Game Folder"
+config/name="Sunny Day"
 run/main_scene="res://menu.tscn"
-config/icon="res://icon.png"
+config/icon="res://game_icon.png"
 
 [autoload]
 
 signal_emitter="*res://signal_emitter/signal_emitter.gd"
+Music="*res://MusicMenu.tscn"
 
 [display]
 

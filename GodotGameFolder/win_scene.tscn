@@ -1,17 +1,59 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Pixeboy-z8XGD.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://airplane/sprites/airplane.png" type="Texture" id=2]
+[ext_resource path="res://win_scene.gd" type="Script" id=3]
+[ext_resource path="res://play_again_button.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 41
 font_data = ExtResource( 1 )
 
+[sub_resource type="Animation" id=2]
+resource_name = "Plane_Landing"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 1.1, 1.6, 2, 2.5, 3, 3.4, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 360, 43 ), Vector2( 299, 59 ), Vector2( 237, 132 ), Vector2( 196, 189 ), Vector2( 155, 210 ), Vector2( 123, 215 ), Vector2( 77, 215 ), Vector2( 27, 215 ), Vector2( -44, 215 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6, 1.1, 1.6, 2, 2.5, 3, 3.4, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -15.9883, -38.3515, -23.2444, 0.0, 0.0, 0.0, 0.0, 0.0 ]
+}
+
 [node name="Win_scene" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 333.0
 margin_bottom = 256.0
 color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_left = -5.0
+margin_top = 177.0
+margin_right = 367.0
+margin_bottom = 239.0
+color = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -29,7 +71,18 @@ margin_top = 108.0
 margin_right = 303.0
 margin_bottom = 133.0
 custom_fonts/font = SubResource( 1 )
-text = "Congradulations"
+text = "congratulations"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -44, 215 )
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+autoplay = "Plane_Landing"
+anims/Plane_Landing = SubResource( 2 )
+
+[node name="Button" parent="." instance=ExtResource( 4 )]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

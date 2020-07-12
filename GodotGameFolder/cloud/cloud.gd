@@ -2,11 +2,9 @@ extends Sprite
 
 onready var screen_size = get_viewport_rect().size
 var direction = 1
-var cloud_speed = 10
+var cloud_speed = 30
 func _ready():
 	randomize()
-	if (randi()% 2 == 0):
-		direction = -1
 	var cloud_number = randi()%3
 	if (cloud_number == 0):
 		texture = load("res://cloud/sprites/cloud1.png")

@@ -1,0 +1,140 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://button/button.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Pixeboy-z8XGD.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://tilt_lift/tile_lift.tscn" type="PackedScene" id=3]
+[ext_resource path="res://switch/switch.tscn" type="PackedScene" id=4]
+[ext_resource path="res://altometer/altometer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://wheel/wheel.tscn" type="PackedScene" id=6]
+[ext_resource path="res://tutorialtimer.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 18
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Fade_In"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Fade_Out"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 323.0
+margin_bottom = 242.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="altometer" parent="ColorRect" instance=ExtResource( 5 )]
+position = Vector2( 9, 10 )
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect"]
+margin_left = 9.0
+margin_top = 126.0
+margin_right = 89.0
+margin_bottom = 178.0
+color = Color( 0.282353, 0.282353, 0.282353, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect/ColorRect2"]
+margin_left = 4.0
+margin_top = 25.0
+margin_right = 76.0
+margin_bottom = 50.0
+color = Color( 0.0117647, 0.717647, 0.0392157, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tilt_lift" parent="ColorRect/ColorRect2" instance=ExtResource( 3 )]
+position = Vector2( 2, 1 )
+
+[node name="button_animated_sprite" parent="ColorRect" instance=ExtResource( 1 )]
+position = Vector2( 291, 222 )
+
+[node name="button_animated_sprite2" parent="ColorRect" instance=ExtResource( 1 )]
+position = Vector2( 291, 200 )
+
+[node name="Label" type="Label" parent="ColorRect"]
+margin_left = 100.0
+margin_top = 11.0
+margin_right = 251.0
+margin_bottom = 230.0
+custom_fonts/font = SubResource( 1 )
+text = "Keep the Altitude Up
+for the time duration
+
+
+
+Switch this to tilt the plane
+forward and backword
+
+
+The green on this is the 
+ground
+
+Turn this to tilt the 
+plane in a better
+ direction 
+And PRESS THE BUTTONS!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="switch" parent="ColorRect" instance=ExtResource( 4 )]
+position = Vector2( 48, 91 )
+
+[node name="wheel_animated_sprite" parent="." instance=ExtResource( 6 )]
+position = Vector2( 49, 210 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 7.0
+one_shot = true
+autostart = true
+script = ExtResource( 7 )
+
+[node name="ColorRect2" type="ColorRect" parent="Timer"]
+margin_left = -4.0
+margin_top = -3.0
+margin_right = 323.0
+margin_bottom = 245.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Timer/ColorRect2"]
+autoplay = "Fade_In"
+anims/Fade_In = SubResource( 2 )
+anims/Fade_Out = SubResource( 3 )
+[connection signal="timeout" from="Timer" to="Timer" method="_on_Timer_timeout"]
+[connection signal="animation_finished" from="Timer/ColorRect2/AnimationPlayer" to="Timer" method="_on_AnimationPlayer_animation_finished"]

@@ -7,6 +7,7 @@ var wind_direction := Vector2(0,0)
 var altitude
 
 func _ready():
+	Music._play_dif("game")
 	set_altitude(100000)
 	signal_emitter.connect("add_to_plane_rotation", self, "_on_add_to_plane_rotation")
 	signal_emitter.connect("set_plane_rotation", self, "_on_set_plane_rotation")

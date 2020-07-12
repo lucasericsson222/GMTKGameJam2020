@@ -1,28 +1,87 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Pixeboy-z8XGD.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://menu.gd" type="Script" id=2]
 [ext_resource path="res://cloud/cloud.tscn" type="PackedScene" id=3]
 [ext_resource path="res://airplane/airplane.tscn" type="PackedScene" id=4]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.6, 0.6, 0.6, 0 )
+[sub_resource type="DynamicFont" id=1]
+size = 62
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 14
+font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
 [sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0, 0, 0, 0 )
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
 [sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.6, 0.6, 0.6, 0 )
+bg_color = Color( 0, 0, 0, 0 )
 
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="DynamicFont" id=7]
 size = 49
 font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=8]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 165.454, 57.484 ), Vector2( 165.454, 68.902 ), Vector2( 165.454, 57.484 ) ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=9]
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.7, 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1.62451, 0.965938, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 165.454, 57.484 ), Vector2( 126.499, 93.0812 ), Vector2( 112.672, 161.683 ), Vector2( 99.9088, 261.129 ), Vector2( 99.909, 500 ) ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, -42.3981, -0.25, 0, 0.25, 0, -83.5245, -0.25, 0, 0.25, 0, -80.3791, -0.25, 0, 0.25, 0, -80.3791, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 1.7, 2.5, 3 )
+}
 
 [node name="menu" type="Node2D"]
 script = ExtResource( 2 )
@@ -35,10 +94,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label" type="Label" parent="."]
+margin_left = 39.5966
+margin_top = 20.608
+margin_right = 281.597
+margin_bottom = 57.608
+custom_fonts/font = SubResource( 1 )
+text = "Sunny Day"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 68.2951
+margin_top = 211.44
+margin_right = 310.295
+margin_bottom = 232.44
+custom_fonts/font = SubResource( 10 )
+text = "Press Space To Disable Music"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="CenterContainer" type="CenterContainer" parent="."]
 margin_right = 321.0
 margin_bottom = 241.0
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -47,12 +129,12 @@ margin_left = 114.0
 margin_top = 106.0
 margin_right = 206.0
 margin_bottom = 135.0
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/disabled = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 text = "PLAY"
 
 [node name="Sprite" parent="." instance=ExtResource( 3 )]
@@ -113,6 +195,13 @@ position = Vector2( 302.244, 18.6067 )
 position = Vector2( 147.472, 15.2329 )
 
 [node name="Sprite6" parent="." instance=ExtResource( 4 )]
-position = Vector2( 165.454, 57.484 )
+position = Vector2( 99.909, 500 )
+rotation = -1.40288
 z_index = 100
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite6"]
+autoplay = "Bob"
+anims/Bob = SubResource( 8 )
+anims/Fall = SubResource( 9 )
 [connection signal="pressed" from="CenterContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="animation_finished" from="Sprite6/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

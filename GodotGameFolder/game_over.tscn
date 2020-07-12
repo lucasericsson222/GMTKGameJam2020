@@ -1,14 +1,118 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Pixeboy-z8XGD.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://play_again_button.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game_over.gd" type="Script" id=3]
+[ext_resource path="res://airplane/sprites/airplane.png" type="Texture" id=4]
+[ext_resource path="res://plane_crash.gd" type="Script" id=5]
+[ext_resource path="res://airplane/sprites/airplane_front.png" type="Texture" id=6]
+[ext_resource path="res://airplane/sprites/airplane_back.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 41
 font_data = ExtResource( 1 )
 
+[sub_resource type="Animation" id=2]
+resource_name = "Crash"
+length = 3.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 360.08, -0.25, 0, 0.25, 0, 181.358, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 10.0168, -0.25, 0, 0.25, 0, 209.3, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( -41.7554, -0.25, 0, 0.25, 0, -41.7554, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_crash"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../airplane_front:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 370.524, 229.523 ), Vector2( 161.835, 219.496 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../airplane_back:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.99, 1, 1.5, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 0.999999, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 391.464, 179.747 ), Vector2( 391.464, 179.747 ), Vector2( 183.401, 191.028 ), Vector2( 183.545, 191.059 ), Vector2( 197.815, 194.161 ), Vector2( 221.622, 213.917 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../airplane_front:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -44.5159 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../airplane_back:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -42.1, -7.72502, 22.6272 ]
+}
+
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
 margin_right = 337.0
 margin_bottom = 252.0
 color = Color( 0, 0, 0, 1 )
@@ -27,3 +131,50 @@ margin_right = 240.0
 margin_bottom = 132.0
 custom_fonts/font = SubResource( 1 )
 text = "Game Over"
+
+[node name="Button" parent="." instance=ExtResource( 2 )]
+margin_left = 104.287
+margin_top = 137.889
+margin_right = 218.287
+margin_bottom = 157.889
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+margin_left = -4.0
+margin_top = 182.0
+margin_right = 372.0
+margin_bottom = 222.0
+color = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="airplane_front" type="Sprite" parent="."]
+position = Vector2( 161.835, 219.496 )
+rotation = -0.776949
+texture = ExtResource( 6 )
+
+[node name="airplane_back" type="Sprite" parent="."]
+position = Vector2( 221.622, 213.917 )
+rotation = 0.39492
+texture = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 181.358, 208.793 )
+rotation = -0.728769
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+autoplay = "Crash"
+anims/Crash = SubResource( 2 )
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_left = -3.63602
+margin_top = 221.745
+margin_right = 372.364
+margin_bottom = 261.745
+color = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
