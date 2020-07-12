@@ -1,9 +1,9 @@
 extends Camera2D
 
 
-export var decay = 0.8
-export var max_offset = Vector2(100, 75)
-export var max_roll = 0.1
+export var decay = 0.95
+export var max_offset = Vector2(5, 5)
+export var max_roll = 0.05
 export (NodePath) var target
 
 var trauma = 0
@@ -11,7 +11,7 @@ var trauma_power = 2
 
 func _ready():
 	randomize()
-	add_trauma(5)
+	signal_emitter.connect("add_trauma", self, "add_trauma")
 
 func add_trauma(amount):
 	trauma = min(trauma + amount, 1.0)

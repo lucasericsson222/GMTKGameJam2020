@@ -34,4 +34,5 @@ func _on_needs_pressed(button):
 		
 func _on_failure_to_press():
 	signal_emitter.emit_signal("add_to_altitude", -1000)
+	signal_emitter.emit_signal("add_trauma", 1)
 	play("not_pressed")

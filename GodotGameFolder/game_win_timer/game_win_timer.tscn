@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://game_win_timer/game_win_timer.gd" type="Script" id=1]
+[ext_resource path="res://Pixeboy-z8XGD.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 29
+font_data = ExtResource( 2 )
+
+[node name="game_win_timer" type="Label"]
+margin_right = 50.0
+margin_bottom = 20.0
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+text = "2:00"
+align = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 120.0
+one_shot = true

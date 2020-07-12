@@ -7,6 +7,7 @@ func _ready():
 
 func _on_timeout():
 	show()
+	signal_emitter.emit_signal("add_trauma", 2)
 	yield(get_tree().create_timer(.5), "timeout")
 	hide()
 	yield(get_tree().create_timer(.2), "timeout")
